@@ -1,11 +1,14 @@
 package iziPak.controller;
 
+import iziPak.components.Cart;
 import iziPak.entity.Account;
 import iziPak.service.AccountService;
+import iziPak.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -13,9 +16,14 @@ import java.util.List;
 @Controller
 public class LoginController {
 
+	@Autowired
+	ProductService productService;
+	@Autowired
+	Cart cart;
 	
-	@GetMapping("/")
-	public String showHome() {
+	@RequestMapping("/")
+	public String showHome(Model model) {
+		model.addAttribute("products",productService.getProducts());
 		return "home";
 	}
 	
@@ -30,8 +38,7 @@ public class LoginController {
 		
 		return "leaders";
 	}
-	
-	// add request mapping for /systems
+
 	
 	@GetMapping("/access-denied")
 	public String showAccessDenied() {
@@ -39,5 +46,7 @@ public class LoginController {
 		return "access-denied";
 		
 	}
+
+
 
 }

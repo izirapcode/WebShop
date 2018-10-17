@@ -21,7 +21,7 @@ public class NewAccountForm {
     }
 
     public String getPassword() {
-        return account.getPassword();
+        return account.getPassword().substring(6);
     }
 
     public void setPassword(String password) {
