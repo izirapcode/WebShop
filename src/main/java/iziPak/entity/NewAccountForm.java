@@ -38,7 +38,7 @@ public class NewAccountForm {
 
     public void setAuhorities(String[] auhorities){
         for(String auhority : auhorities)
-        account.add(new Authority(auhority));
+        account.addAuthority(new Authority(auhority));
     }
 
     public String[] getAuhorities(){

@@ -1,15 +1,17 @@
 package iziPak.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.beans.ConstructorProperties;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -22,7 +24,10 @@ public class Product {
     @Column(name = "cost")
     private float cost;
 
-    @Id
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders;
+
+
     public int getId() {
         return id;
     }
@@ -53,5 +58,29 @@ public class Product {
 
     public void setCost(float cost) {
         this.cost = cost;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id &&
+                Float.compare(product.cost, cost) == 0 &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, cost);
     }
 }

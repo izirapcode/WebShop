@@ -76,7 +76,6 @@ public class DatabaseConfig {
         prop.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         prop.setProperty("hibernate.show_sql","true");
         sessionFactory.setHibernateProperties(prop);
-
         return sessionFactory;
     }
 
@@ -90,6 +89,7 @@ public class DatabaseConfig {
         return transactionManager;
 
     }
+
 
 }
 

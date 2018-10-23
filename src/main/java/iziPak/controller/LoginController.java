@@ -18,8 +18,8 @@ public class LoginController {
 
 	@Autowired
 	ProductService productService;
-	@Autowired
-	Cart cart;
+
+
 	
 	@RequestMapping("/")
 	public String showHome(Model model) {
@@ -32,12 +32,6 @@ public class LoginController {
 		
 		return "fancy-login";
 	}
-	
-	@GetMapping("/leaders")
-	public String showLeaders() {
-		
-		return "leaders";
-	}
 
 	
 	@GetMapping("/access-denied")
@@ -46,6 +40,7 @@ public class LoginController {
 		return "access-denied";
 		
 	}
+
 
 
 

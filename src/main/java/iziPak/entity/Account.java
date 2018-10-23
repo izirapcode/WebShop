@@ -1,9 +1,10 @@
 package iziPak.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name="users")
@@ -21,6 +22,11 @@ public class Account {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval = true,mappedBy = "account")
 	private List<Authority> authorities;
+
+
+	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Order> orders;
+
 
 	public List<Authority> getAuthorities() {
 		return authorities;
@@ -58,7 +64,7 @@ public class Account {
 		this.enabled = enabled;
 	}
 
-	public void add(Authority authority){
+	public void addAuthority(Authority authority){
 
 		if(authorities == null)
 			authorities = new LinkedList<>();
@@ -66,4 +72,19 @@ public class Account {
 		authorities.add(authority);
 	}
 
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+
+	public void addOrder(Order order){
+
+		if(orders == null)
+			orders = new HashSet<>();
+		order.setAccount(this);
+		orders.add(order);
+	}
 }

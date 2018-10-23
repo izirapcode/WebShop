@@ -15,12 +15,14 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountDAO accountDao;
+
 	
 	@Override
 	@Transactional
 	public List<Account> getAccounts() {
 		return accountDao.getAccounts();
 	}
+
 
 	@Override
 	@Transactional

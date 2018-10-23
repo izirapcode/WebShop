@@ -14,7 +14,6 @@
 
 	
 	<hr>
-	<h1>${cartNumber}</h1>
 	<!-- display user name and role -->
 	
 	<p>
@@ -42,7 +41,7 @@
 
 
 	</security:authorize>
-
+	<a href="/cart">My cart</a>  <a href="/orders">My orders</a>
 	<%--List of products--%>
 	<table>
 		<tr>

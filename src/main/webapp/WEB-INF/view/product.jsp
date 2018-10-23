@@ -15,6 +15,10 @@
 <p>${product.description}</p><br>
 <hr><br>
 Cost : ${product.cost} $<br>
+    <form action="/buyProduct">
+        <input type="hidden" value="${product.id}" name="id">
+        <input type="submit" value="Add to cart">
+    </form>
 <a href="/">Back</a>
 </body>
 </html>
