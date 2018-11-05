@@ -25,7 +25,7 @@
 	<div>
 		
 		<div id="loginbox" style="margin-top: 50px;"
-			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+			class="mainbox col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-2">
 			
 			<div class="panel panel-info">
 
@@ -89,7 +89,6 @@
 							</div>
 						</div>
 
-						<!-- I'm manually adding tokens ... Bro! -->
 
 						<input type="hidden"
 							   name="${_csrf.parameterName}"

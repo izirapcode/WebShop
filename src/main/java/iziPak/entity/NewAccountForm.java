@@ -21,7 +21,9 @@ public class NewAccountForm {
     }
 
     public String getPassword() {
+        if(account.getPassword() != null)
         return account.getPassword().substring(6);
+        return account.getPassword();
     }
 
     public void setPassword(String password) {
@@ -43,6 +45,8 @@ public class NewAccountForm {
 
     public String[] getAuhorities(){
 
+        if(account.getAuthorities()==null)
+            return null;
         int i=0;
         ArrayList<String> result = new ArrayList<>();
         for(Authority authority :account.getAuthorities())

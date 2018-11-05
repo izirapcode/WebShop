@@ -5,24 +5,30 @@
 <html>
 
 <head>
-	<title>Home Page</title>
+	<title>WebShop - Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Reference Bootstrap files -->
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
+<div class="container">
+	<h6 class="col-sm-1 col-sm-offset-11">User: <security:authentication property="principal.username" /></h6>
 	<h2>Web Shop</h2>
 	<hr>
 
-	
+	<h4 class="text-success"> <a href="/cart"  >My cart</a> | <a href="/orders" >My orders</a> </h4>
 	<hr>
 	<!-- display user name and role -->
-	
-	<p>
-		User: <security:authentication property="principal.username" />
-		<br><br>
-		Role(s): <security:authentication property="principal.authorities" />
-	</p>
-	
-	<hr>
+
 	<security:authorize access="hasRole('MANAGER')">
 	<!-- Add a link to point to /leaders ... this is for the managers -->
 	
@@ -36,14 +42,12 @@
 	
 	<p>
 		<a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a>
-		(Only for Admin peeps)
 	</p><hr>
 
 
 	</security:authorize>
-	<a href="/cart">My cart</a>  <a href="/orders">My orders</a>
 	<%--List of products--%>
-	<table>
+	<table class="table table-dark table-striped">
 		<tr>
 			<th>Name</th>
 			<th>Cost</th>
@@ -54,7 +58,7 @@
 				<c:param name="id" value="${temp.id}"/>
 			</c:url>
 			<tr>
-				<td><a href=${productLink}>${temp.name}</a> </td>
+				<td><a href=${productLink} class="text-info">${temp.name}</a> </td>
 				<td> ${temp.cost} </td> <td>
 			</tr>
 		</c:forEach>
@@ -64,10 +68,10 @@
 	<form:form action="${pageContext.request.contextPath}/logout" 
 			   method="POST">
 	
-		<input type="submit" value="Logout" />
+		<input type="submit" value="Logout" class="btn" />
 	
 	</form:form>
-	
+</div>
 </body>
 
 </html>
